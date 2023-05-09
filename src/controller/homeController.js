@@ -1,7 +1,30 @@
+import connection from "../configs/connectDB";
+
+
 let getHomepage = (req, res) => {
-    return res.render('index.ejs');
+    let data = [];
+    connection.query(
+        'SELECT * FROM `users` ',
+        function (err, results, fields) {
+
+            results.map((row) => {
+                data.push({
+                    id: row.id,
+                    email: row.email,
+                    address: row.address,
+                    firstNAme: row.firstNAme,
+                    lastName: row.lastName
+                })
+            });
+            return res.render('index.ejs', { dataUser: JSON.stringify(data) });
+
+        }
+    );
+
+
+
 }
 module.exports = {
 
     getHomepage
-}
+} 
