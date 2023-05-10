@@ -42,3 +42,8 @@ body {
     cursor: pointer;
     margin-top: 15px;
 }
+
+.update-container {
+    display: center;
+    padding: 15px;
+}
